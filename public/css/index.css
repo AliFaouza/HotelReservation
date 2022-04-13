@@ -1,0 +1,98 @@
+
+ .container
+    {
+               
+     display: grid;
+     justify-content: right;
+     margin-left: 90px ;
+     margin-top: 15px;
+     padding-right: 1px;
+     width: 500px;
+     margin-right: 5%;
+     justify-content: space-between;
+     align-content: space-between;   
+     border-radius: .5em;
+    }
+ .box
+    {
+                
+               
+     background-color: rgba(111,41,97,.3);
+     border: 5px solid rgb(111,41,97);
+     border-radius: .5em;
+     margin-left:  600px;
+               
+     padding-left: 100px;
+     margin-top: -210px;
+     height: 210px;
+     width: 450px;
+                
+    }
+.box2
+   {
+     margin-left: 4px;
+     margin-top: 50px;
+    
+     padding-left: 100px;
+     background-color: rgba(111,41,97,.3);
+     border: 5px solid rgb(111,41,97);
+     border-radius: .5em;
+     height: 210px;
+     width: 450px;
+    }
+
+    .for
+    {
+     margin-left: 10px;
+    
+    
+    }
+.noir{
+    margin: 100xp;
+  
+}
+
+.form
+    {
+      display: flex;
+      flex-wrap: wrap;
+      width : 120px;   
+      width: 1020px;
+      height: 9em;
+      border: 5px solid rgb(111,41,97);
+      border-radius: .5em;
+      padding: 10px;
+      margin-left: 120px;
+      margin-top: 5px;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+p   { 
+      display: table-row;  
+    }
+.btn {
+        margin-left: 900px;
+        background-color: purple;
+    }
+h4
+    {
+     text-decoration: underline;
+     text-align: center;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     color: black ;
+    }
+.box1
+    {  
+     background-color: rgba(111,41,97,.3);
+     border: 5px solid rgb(111,41,97);
+     border-radius: .5em;     
+     text-align: left;
+     width: 900px;
+     padding-left: 50px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     margin-top: 10px;
+    }
+    
+    body{
+        background-color: aliceblue;
+       } 
