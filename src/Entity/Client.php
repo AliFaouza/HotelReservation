@@ -1,49 +1,64 @@
 <?php
 
 namespace App\Entity;
-
-use App\Repository\ClientRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * Client
+ * @ORM\Table(name="client")
+ * @ORM\Entity
  */
-class Client
+class Client  implements UserInterface
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100, nullable=false)
      */
-    private $Nom;
+    private $nom;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=false)
      */
-    private $Prenom;
+    private $prenom;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string|null
+     *
+     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
      */
-    private $Tel;
+    private $tel;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $Email;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @var string|null
+     *
+     * @ORM\Column(name="sex", type="string", length=2, nullable=true)
      */
-    private $Sex;
+    private $sex;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="motdpass", type="string", length=255, nullable=false)
      */
     private $motdpass;
 
@@ -54,60 +69,60 @@ class Client
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): self
+    public function setNom(string $nom): self
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
 
     public function getPrenom(): ?string
     {
-        return $this->Prenom;
+        return $this->prenom;
     }
 
-    public function setPrenom(string $Prenom): self
+    public function setPrenom(string $prenom): self
     {
-        $this->Prenom = $Prenom;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
-    public function getTel(): ?int
+    public function getTel(): ?string
     {
-        return $this->Tel;
+        return $this->tel;
     }
 
-    public function setTel(int $Tel): self
+    public function setTel(?string $tel): self
     {
-        $this->Tel = $Tel;
+        $this->tel = $tel;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getSex(): ?string
     {
-        return $this->Sex;
+        return $this->sex;
     }
 
-    public function setSex(string $Sex): self
+    public function setSex(?string $sex): self
     {
-        $this->Sex = $Sex;
+        $this->sex = $sex;
 
         return $this;
     }
@@ -123,4 +138,30 @@ class Client
 
         return $this;
     }
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+    public function getSalt()
+    {
+        
+    }
+    public function getPassword()
+    {
+        return (string) $this->motdpass;
+    }
+    public function getUsername()
+    {
+        
+        return (string) $this->email;
+    }
+   public function getUserIdentifier()
+   {
+       
+   }
+
 }

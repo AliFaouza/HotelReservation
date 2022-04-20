@@ -4,141 +4,106 @@
 {% block body %}
 
    {{ parent() }}
+   {{ form_start(formReservation) }}
+   {{ form_start(formChambre) }}
+  
      <div class="row">
           <div class="offset-1 col-10">
                <form action="{{ path('acceuil') }}" class="m-3" method="post">
                     <fieldset class="border border-5 rounded p-2 border-success  d-none formulaire 1 " id="page1">
                          <div class="d-flex justify-content-between">
                               <div class="m-2">
-                                   <label class="form-label">Date d'arrivée</label>
-                                   <input type="date" name="date" class="form-control" required> 
+                                  
+                                   {{ form_row(formReservation.DateArrivee) }}
                               </div>
                               <div class="m-2">
-                                   <label class="form-label">Date de départ</label>
-                                   <input type="date" name="out"  class="form-control" required> 
+                                   {{ form_row(formReservation.DateDepart) }}
                               </div>
                               <div class="m-2">
-                                   <label class="form-label">Adultes</label>
-                                   <input type="number" name="adul"  class="form-control" required> 
+                                   {{ form_row(formReservation.Nombre_adulte) }}
                               </div>
                               <div class="m-2">
-                                   <label class="form-label">Enfants</label>
-                                   <input type="number" name="child"  class="form-control" required> 
+                                   {{ form_row(formReservation.Nombre_Enfant) }}
                               </div>
+                          
                               <div class="m-2">
-                                   <label class="form-label">Chambres</label>
-                                   <input type="number" name="room"  class="form-control" required> 
+                                   {{ form_row(formChambre.nombre) }}
+                                   
                               </div>
                          </div>
                         
-                         <button type="button" class="btn btn-success next m-1">Suivant</button>
+                         <button type="button" class="btn btn-success next m-1 ">Suivant</button>
                     </fieldset>
-                    <fieldset class="formulaire  2 d-none">
+                    <fieldset class="formulaire  2 d-none justify-content-center">
                          <fieldset class="form-group">
-                              <legend class="mt-4" style="color: rgb(206, 177, 12);">Motif du voyage</legend>
                               <div class="form-check">
-                                        <label class="form-check-label">
-                                             <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                             Affaire
-                                        </label>
-                              </div> 
-                              <div class="form-check">
-                                        <label class="form-check-label">
-                                             <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                                             Vaccance
-                                        </label>
-                              </div>
-                              <div class="form-check">
-                                        <label class="form-check-label">
-                                             <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
-                                             Tourisme
-                                        </label>
-                              </div>
-                              <div class="form-check">
-                                        <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4">
-                                        Lune de miel
-                                        </label>
-                              </div>
-
+                                   {{ form_row(formReservation.Motif) }}
+                              </div >
                          </fieldset>
+                        
+                         <div class="form-group">
+                              {{ form_row(formChambre.typechambre) }}
+                         </div >
+                       
                          <fieldset class="form-group">
-                              <legend class="mt-4" style="color: rgb(206, 177, 12);"> Type de chambre</legend>
-                              <div class="form-check">
-                                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                   <label class="form-check-label" for="flexCheckDefault">
-                                   Suite
-                                   </label>
-                              </div>
-                              <div class="form-check">
-                                   <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                   <label class="form-check-label" for="flexCheckChecked">
-                                   Vue  sur la mer
-                                   </label>
-                              </div>
-                              <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                  <label class="form-check-label" for="flexCheckChecked">
-                                    Lit à grand lit
-                                  </label>
-                              </div>
-                              <div class="form-check">
-                                   <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                   <label class="form-check-label" for="flexCheckChecked">
-                                        Lit à lit jumeaux
-                                   </label>
-                              </div>
+                             
                          </fieldset>
                          <button type="button" class="btn btn-success prev">Retour</button>
-                         <button type="button" class="btn btn-success  next"> Suivant </button>
+                         <button type="submit" class="btn btn-success  next"> Suivant </button>
                     </fieldset>
-                    
+                    {{ form_start(formClient) }}
                     <fieldset class="row g-3 border border-5 rounded p-2 border-success formulaire d-none" id="page3">
                          <div class="offset-1 col-10">
                               
                                    <div class="d-flex justify-content-between">
                                         <div class="col-md-5">
-                                             <label class="form-label">Nom</label>
-                                             <input type="text" class="form-control" placeholder="Last name" aria-label=" name" required>
+                                            {{ form_row(formClient.nom)}}
                                         </div>
                               
                                         <div class="col-md-5 ">
-                                             <label class="form-label">Prenom</label>
-                                             <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" required>
+                                             {{ form_row(formClient.prenom) }}
                                         </div>
                                    </div>
                                    <div class="d-flex justify-content-between">
                                         <div class="col-md-5">
-                                             <label for="inputEmail4" class="form-label">Email</label>
-                                             <input type="email" class="form-control" id="inputEmail4" required>
+                                             {{ form_row(formClient.email) }}
                                         </div>
                               
                                    <div class="col-md-5">
-                                        <label for="inputPassword4" class="form-label">Tel</label>
-                                        <input type="tel" class="form-control" id="inputtel" required>
+                                        {{ form_row(formClient.tel) }}
                                    </div>
                               </div>
-                        </div>
-                        <button type="button" class="btn btn-success prev">Retour</button>
-                        <button type="submit" class="btn btn-success">submit</button>
-                    </fieldset>
+                                
+                              <div class=" ">
+                                   {{ form_row(formClient.sex) }}
+                              </div>
 
+                              <div class="text-end">
+                                   <button type="button" class="btn btn-success prev">Retour</button>
+                                   <button type="submit" class="btn btn-success">submit</button>
+                              </div>
+                              
+                        </div>
+                        
+                        
+                    </fieldset>
+                    {{ form_end(formClient) }}
                </form>
           </div>
      </div>
 
 
 
-     <div class="card-group border border-raduis p-3 ">
-          <div class="card m-3 mb-5 border border-raduis">
-            <img src="{{ asset('photos/comores.jpg') }}" class="card-img-top" alt="...">
+     <div class="card-group border border-raduis p-3 " >
+          <div class="card m-3 mb-5 border border-raduis" style="box-shadow:10px 10px 5px 5px rgb(179, 171, 171)">
+            <img src="{{ asset('photos/comores.jpg') }}">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
-          <div class="card m-3 mb-5">
+          <div class="card m-3 mb-5" style="box-shadow:10px 10px 5px 5px rgb(179, 171, 171)">
             <img src="{{ asset('photos/350x250.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
@@ -146,8 +111,8 @@
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
-          <div class="card m-3 mb-5">
-            <img src="{{ asset('photos/FFFFFF.jpg') }}" class="card-img-top" alt="...">
+          <div class="card m-3 mb-5"  style="box-shadow:10px 10px 5px 5px rgb(179, 171, 171)">
+            <img src="{{ asset('photos/FFFFFF.jpg') }}">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>

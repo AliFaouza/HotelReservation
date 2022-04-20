@@ -2,70 +2,43 @@
 
 {% block title %}Information{% endblock %}
 {% block stylesheets %}
-{{ parent() }}
+<style>
+  .base{
+    border-radius:20px;
+    margin: 70px;
+    margin-top: 2px;
+    border: 3px rgb(245, 235, 235) solid;
+    padding: 20px;
+    box-shadow:10px 10px 5px 5px rgb(232, 224, 224);
+  }
+  .page{
+    padding-top: 10px;
+    padding-left: 40px;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
 {{ parent() }}
-<div class="card-columns ">
-  <div class="card ">
-    <img class="card-img-top" src="{{ asset('photos/venetian.jpg')}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+  <div class="base">
+    <center><h1>Presentation de l'entreprise </h1></center>
+    <div class="page">
+      L’Hôtel Ritaj est construit depuis 1982. <br> À cette époque on l’appelait Novotel, puis Comotel, ensuite Le Moroni de 2001à2011, <br>
+      c’est a partir de 2011 jusqu’a nos jours qu’on la nommé l’Hôtel Ritaj. Il s’agit d’une chaine hôtelière de Qatari. <br>
+     Ce dernier se situe au sud du capital à 35miniutes de l’aéroport et a 5minutes du centre ville. <br> L’Hôtel donne à la fois sur le volcan Karthala et l’océan. <br>
+     Cet Hôtel situé à coté des nations unies et du parlement, facilite les désirs aussi bien des hommes d’affaires qu’aux touristes d’un niveau international. <br>
+     L’hôtel Ritaj est constitué de 4suites, 42chambres à grand lit, 12chambres à lit jumeaux. <br>
+      D’un mini barre, d’une télévisons avec des chaines satellites, accès à l’internet, salle de bain attenante, avec tout les produits d’accueil, <br>
+      lingerie, service chambre et nettoyage à sec, mais aussi d’un téléphone et d’un coffre-fort. Et en fin d’un restaurant situé au rez de chaussée <br>
+       qui sert à la fois des plats locaux et internationaux.
+     D’une piscine et d’un salon de thé ou on sert toute variété de thé, café et des jus naturels.
     </div>
-  </div>
-  <div class="card p-3">
-    <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="{{ asset('photos/venetian.jpg')}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
+</div>
+
+
+
+
  
-  <div class="card text-center">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img" src="{{ asset('photos/venetian.jpg')}}" alt="Card image">
-  </div>
-  <div class="card p-3 text-right">
-    <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
-
-
-
-
-</div>
  
 {% endblock %}

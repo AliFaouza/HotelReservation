@@ -2,45 +2,79 @@
 
 namespace App\Entity;
 
-use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ReservationRepository::class)
+ * Reservation
+ *
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="IDX_42C849559B177F54", columns={"chambre_id"}), @ORM\Index(name="IDX_42C8495519EB6921", columns={"client_id"})})
+ * @ORM\Entity
  */
 class Reservation
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_arrivee", type="date", nullable=false)
      */
-    private $DateArrivee;
+    private $dateArrivee;
 
     /**
-     * @ORM\Column(type="date")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_depart", type="date", nullable=false)
      */
-    private $DateDepart;
+    private $dateDepart;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var string
+     *
+     * @ORM\Column(name="motif", type="string", length=100, nullable=false)
      */
-    private $Motif;
+    private $motif;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="nombre_adulte", type="integer", nullable=false)
      */
-    private $Nombre_adulte;
+    private $nombreAdulte;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="nombre_enfant", type="integer", nullable=false)
      */
-    private $Nombre_Enfant;
+    private $nombreEnfant;
+
+    /**
+     * @var \Chambre
+     *
+     * @ORM\ManyToOne(targetEntity="Chambre")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="chambre_id", referencedColumnName="id")
+     * })
+     */
+    private $chambre;
+
+    /**
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     * })
+     */
+    private $client;
 
     public function getId(): ?int
     {
@@ -49,61 +83,87 @@ class Reservation
 
     public function getDateArrivee(): ?\DateTimeInterface
     {
-        return $this->DateArrivee;
+        return $this->dateArrivee;
     }
 
-    public function setDateArrivee(\DateTimeInterface $DateArrivee): self
+    public function setDateArrivee(\DateTimeInterface $dateArrivee): self
     {
-        $this->DateArrivee = $DateArrivee;
+        $this->dateArrivee = $dateArrivee;
 
         return $this;
     }
 
     public function getDateDepart(): ?\DateTimeInterface
     {
-        return $this->DateDepart;
+        return $this->dateDepart;
     }
 
-    public function setDateDepart(\DateTimeInterface $DateDepart): self
+    public function setDateDepart(\DateTimeInterface $dateDepart): self
     {
-        $this->DateDepart = $DateDepart;
+        $this->dateDepart = $dateDepart;
 
         return $this;
     }
 
     public function getMotif(): ?string
     {
-        return $this->Motif;
+        return $this->motif;
     }
 
-    public function setMotif(string $Motif): self
+    public function setMotif(string $motif): self
     {
-        $this->Motif = $Motif;
+        $this->motif = $motif;
 
         return $this;
     }
 
     public function getNombreAdulte(): ?int
     {
-        return $this->Nombre_adulte;
+        return $this->nombreAdulte;
     }
 
-    public function setNombreAdulte(int $Nombre_adulte): self
+    public function setNombreAdulte(int $nombreAdulte): self
     {
-        $this->Nombre_adulte = $Nombre_adulte;
+        $this->nombreAdulte = $nombreAdulte;
 
         return $this;
     }
 
     public function getNombreEnfant(): ?int
     {
-        return $this->Nombre_Enfant;
+        return $this->nombreEnfant;
     }
 
-    public function setNombreEnfant(int $Nombre_Enfant): self
+    public function setNombreEnfant(int $nombreEnfant): self
     {
-        $this->Nombre_Enfant = $Nombre_Enfant;
+        $this->nombreEnfant = $nombreEnfant;
 
         return $this;
     }
+
+    public function getChambre(): ?Chambre
+    {
+        return $this->chambre;
+    }
+
+    public function setChambre(?Chambre $chambre): self
+    {
+        $this->chambre = $chambre;
+
+        return $this;
+    }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+
 }

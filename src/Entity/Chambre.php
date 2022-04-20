@@ -2,35 +2,45 @@
 
 namespace App\Entity;
 
-use App\Repository\ChambreRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ChambreRepository::class)
+ * Chambre
+ *
+ * @ORM\Table(name="chambre")
+ * @ORM\Entity
  */
 class Chambre
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer", nullable=false)
      */
-    private $Prix;
+    private $prix;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @var int
+     *
+     * @ORM\Column(name="nombre", type="integer", nullable=false)
      */
-    private $Type;
+    private $nombre;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string|null
+     *
+     * @ORM\Column(name="typechambre", type="string", length=100, nullable=true)
      */
-    private $Nombre;
+    private $typechambre;
 
     public function getId(): ?int
     {
@@ -39,37 +49,39 @@ class Chambre
 
     public function getPrix(): ?int
     {
-        return $this->Prix;
+        return $this->prix;
     }
 
-    public function setPrix(int $Prix): self
+    public function setPrix(int $prix): self
     {
-        $this->Prix = $Prix;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->Type;
-    }
-
-    public function setType(string $Type): self
-    {
-        $this->Type = $Type;
+        $this->prix = $prix;
 
         return $this;
     }
 
     public function getNombre(): ?int
     {
-        return $this->Nombre;
+        return $this->nombre;
     }
 
-    public function setNombre(int $Nombre): self
+    public function setNombre(int $nombre): self
     {
-        $this->Nombre = $Nombre;
+        $this->nombre = $nombre;
 
         return $this;
     }
+
+    public function getTypechambre(): ?string
+    {
+        return $this->typechambre;
+    }
+
+    public function setTypechambre(?string $typechambre): self
+    {
+        $this->typechambre = $typechambre;
+
+        return $this;
+    }
+
+
 }
